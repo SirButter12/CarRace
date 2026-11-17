@@ -4,6 +4,9 @@ import com.programacion3.carrace.App;
 import com.programacion3.carrace.model.Car;
 import com.programacion3.carrace.model.CarRaceModel;
 import java.net.URL;
+import javafx.animation.KeyFrame; 
+import javafx.animation.Timeline; 
+import javafx.util.Duration;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +34,10 @@ public class SlideShowController {
 
     private List<Car> cars;
     private int currentSlide;
-
+    
+    private static final Duration SLIDE_DELAY = Duration.seconds(4.0);
+    
+    private Timeline slideTimeline;
     /**
      * Called automatically after the FXML is loaded.
      */
@@ -54,6 +60,25 @@ public class SlideShowController {
             carImageView.setImage(new Image(imageUrl.toExternalForm()));
         }
         captionLabel.setText(car + "  -  ready to race!");
+    }
+    
+    /**
+    * Creates a Timeline that shows the next car after each delay.
+    */
+    private void startSlideShow() {
+        slideTimeline = new Timeline(new KeyFrame(SLIDE_DELAY, e -> nextSlide()));
+        slideTimeline.setCycleCount(cars.size());
+        slideTimeline.play();
+    }
+
+    /**
+    * Moves to the next slide if there is one.
+    */
+    private void nextSlide() {
+        currentSlide++;
+        if (currentSlide < cars.size()) {
+            showSlide(currentSlide);
+        }
     }
 
     /**
