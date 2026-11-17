@@ -101,9 +101,9 @@ public class SlideShowController {
         
         int i = random.nextInt(1, 4); 
         
-        URL soundUrl = App.class.getResource(String.format("sounds/intro%d.mp3", i));
+        URL soundUrl = App.class.getResource(String.format("sounds/intro%d.wav", i));
         if (soundUrl == null) {
-            System.err.println("Sound file not found: sounds/intro.mp3");
+            System.err.printf("Sound file not found: sounds/intro%d.wav\n", i);
             return;
         }
         mediaPlayer = new MediaPlayer(new Media(soundUrl.toExternalForm()));

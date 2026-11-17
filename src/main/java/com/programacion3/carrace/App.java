@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 * Entry point of the Car Race application. Shows the slideshow first,
 * then the race simulation.
 *
-* @author Tu Nombre
+* @author Ian
 */
 public class App extends Application {
 
