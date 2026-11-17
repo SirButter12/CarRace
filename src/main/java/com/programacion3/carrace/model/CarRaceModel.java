@@ -38,11 +38,12 @@ public class CarRaceModel {
         finishOrder = new ArrayList<>();
         random = new Random();
 
+        cars.add(new Car("Humvee de la SEDENA", 44, "Brown", "#C2A878", START_X, laneY(4)));
         cars.add(new Car("Patrulla de los Federales", 12, "Blue", "#1A237E", START_X, laneY(0)));
         cars.add(new Car("Ruta del Vitor", 69, "green", "#66BB6A", START_X, laneY(1)));
         cars.add(new Car("Tsuru Tuneado", 88, "Red", "#FF0000", START_X, laneY(2)));
-        cars.add(new Car("Vocho amarillo", 44, "Yellow", "#FFFF00", START_X, laneY(3)));
-        cars.add(new Car("Humvee de la SEDENA", 44, "Brown", "#C2A878", START_X, laneY(4)));
+        cars.add(new Car("Vocho amarillo", 23, "Yellow", "#FFFF00", START_X, laneY(3)));
+        
         
         randomizeSpeeds();
     }
