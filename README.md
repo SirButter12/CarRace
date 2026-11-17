@@ -1,55 +1,7 @@
-# Markdown Cheat Sheet (Example File)
+# Car Race – JavaFX MVC
+   Assignment 02 – Program Development in a Graphical Environment.
+   JavaFX application (Java 25, FXML + SceneBuilder) that shows a car slideshow
+   with music and then an animated race of 5 cars drawn with JavaFX shapes.
 
-This is a **generic Markdown template** showcasing essential formatting features.
-
----
-
-## 1. Headers
-# H1 (Largest)
-## H2
-### H3
-#### H4
-##### H5
-###### H6 (Smallest)
-
----
-
-## 2. Text Formatting
-- **Bold** (`**text**` or `__text__`)
-- *Italic* (`*text*` or `_text_`)
-- ~~Strikethrough~~ (`~~text~~`)
-- `Inline Code` (`` `code` ``)
-- > Blockquote (prefix with `>`)
-
----
-
-## 3. Lists
-### Unordered List
-- Item 1
-- Item 2
-  - Nested Item (indent with 2 spaces)
-
-### Ordered List
-1. First item
-2. Second item
-   1. Nested item (indent with 3 spaces)
-
-### Task List
-- [x] Completed task
-- [ ] Pending task (`[ ]`)
-
----
-
-## 4. Links
-- [Hyperlink](https://example.com) (`[text](url)`)
-
----
-
-## 5. Code Blocks
-```java
-# Syntax-highlighted block (java)
-class HelloWorld {
-    public static main(String... args) {
-        System.out.println("Hello markdown");
-    }
-}
+   ## How to run
+   NetBeans → Run, or `mvn clean javafx:run`.
