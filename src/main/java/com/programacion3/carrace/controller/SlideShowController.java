@@ -8,6 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline; 
 import javafx.util.Duration;
 import java.util.List;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -60,6 +61,13 @@ public class SlideShowController {
             carImageView.setImage(new Image(imageUrl.toExternalForm()));
         }
         captionLabel.setText(car + "  -  ready to race!");
+        
+        slideProgress.setProgress((index + 1) / (double) cars.size());
+
+        FadeTransition fade = new FadeTransition(Duration.millis(600), carImageView);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
     }
     
     /**
