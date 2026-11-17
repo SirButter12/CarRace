@@ -52,6 +52,8 @@ public class SlideShowController {
         cars = new CarRaceModel().getCars();
         currentSlide = 0;
         showSlide(currentSlide);
+        playMusic();
+        startSlideShow();
     }
 
     /**

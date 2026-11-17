@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="slideshow-root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="slideshow-root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programacion3.carrace.controller.SlideShowController">
    <top>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="6.0" BorderPane.alignment="CENTER">
          <padding>
@@ -36,8 +35,8 @@
          </padding>
          <children>
             <Label fx:id="captionLabel" styleClass="caption" text="Car #88 (Red Tsuru Tuneado)" />
-            <ProgressBar prefWidth="400.0" progress="0.2" />
-            <Button fx:id="skipButton" mnemonicParsing="false" styleClass="skip-button" text="Skip intro" />
+            <ProgressBar fx:id="slideProgress" prefWidth="400.0" progress="0.2" />
+            <Button fx:id="skipButton" mnemonicParsing="false" onAction="#handleSkip" styleClass="skip-button" text="Skip intro" />
          </children>
       </VBox>
    </bottom>
