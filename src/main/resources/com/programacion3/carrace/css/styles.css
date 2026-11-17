@@ -7,3 +7,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : ian
 */
 
+/*
+    * Styles of the Car Race application.
+    * @author Tu Nombre
+    */
+
+   /* ---------- Slideshow ---------- */
+   .slideshow-root {
+       -fx-background-color: linear-gradient(to bottom, #0d1b2a, #1b263b);
+   }
+
+   .greeting {
+       -fx-font-size: 32px;
+       -fx-font-weight: bold;
+       -fx-text-fill: #ffd60a;
+   }
+
+   .subtitle {
+       -fx-font-size: 18px;
+       -fx-text-fill: #e0e1dd;
+   }
+
+   .caption {
+       -fx-font-size: 20px;
+       -fx-font-weight: bold;
+       -fx-text-fill: white;
+   }
+
+   .skip-button {
+       -fx-background-color: transparent;
+       -fx-border-color: #e0e1dd;
+       -fx-border-radius: 15;
+       -fx-text-fill: #e0e1dd;
+       -fx-cursor: hand;
+   }
+
+   .skip-button:hover {
+       -fx-background-color: #415a77;
+   }
