@@ -8,6 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline; 
 import javafx.util.Duration;
 import java.util.List;
+import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * Controller of the slideshow view. Shows one car image at a time,
@@ -39,6 +42,8 @@ public class SlideShowController {
     private static final Duration SLIDE_DELAY = Duration.seconds(4.0);
     
     private Timeline slideTimeline;
+    
+    private MediaPlayer mediaPlayer;
     /**
      * Called automatically after the FXML is loaded.
      */
@@ -87,6 +92,22 @@ public class SlideShowController {
         if (currentSlide < cars.size()) {
             showSlide(currentSlide);
         }
+    }
+    
+    private void playMusic() {
+        Random random = new Random();
+        
+        int i = random.nextInt(1, 4); 
+        
+        URL soundUrl = App.class.getResource(String.format("sounds/intro%d.mp3", i));
+        if (soundUrl == null) {
+            System.err.println("Sound file not found: sounds/intro.mp3");
+            return;
+        }
+        mediaPlayer = new MediaPlayer(new Media(soundUrl.toExternalForm()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.6);
+        mediaPlayer.play();
     }
 
     /**
