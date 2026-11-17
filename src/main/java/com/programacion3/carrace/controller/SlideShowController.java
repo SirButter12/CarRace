@@ -3,6 +3,7 @@ package com.programacion3.carrace.controller;
 import com.programacion3.carrace.App;
 import com.programacion3.carrace.model.Car;
 import com.programacion3.carrace.model.CarRaceModel;
+import java.io.IOException;
 import java.net.URL;
 import javafx.animation.KeyFrame; 
 import javafx.animation.Timeline; 
@@ -83,6 +84,7 @@ public class SlideShowController {
     private void startSlideShow() {
         slideTimeline = new Timeline(new KeyFrame(SLIDE_DELAY, e -> nextSlide()));
         slideTimeline.setCycleCount(cars.size());
+        slideTimeline.setOnFinished(e -> goToRace());
         slideTimeline.play();
     }
 
@@ -111,6 +113,22 @@ public class SlideShowController {
         mediaPlayer.setVolume(0.6);
         mediaPlayer.play();
     }
+    
+    /**
+    * Stops the slideshow and the music, then shows the race view.
+    */
+   private void goToRace() {
+       slideTimeline.stop();
+       if (mediaPlayer != null) {
+           mediaPlayer.stop();
+           mediaPlayer.dispose();
+       }
+       try {
+           App.setRoot("view/CarRace");
+       } catch (IOException ex) {
+           System.err.println("Could not load the race view: " + ex.getMessage());
+       }
+   }
 
     /**
      * Skips the slideshow and opens the race right away.
@@ -119,5 +137,6 @@ public class SlideShowController {
      */
     @FXML
     private void handleSkip(ActionEvent event) {
+        goToRace();
     }
 }
