@@ -4,4 +4,5 @@ module com.programacion3.carrace {
 
     opens com.programacion3.carrace to javafx.fxml;
     exports com.programacion3.carrace;
+    exports com.programacion3.carrace.model;
 }
