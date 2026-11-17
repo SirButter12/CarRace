@@ -1,6 +1,7 @@
 package com.programacion3.carrace.controller;
 
 import com.programacion3.carrace.model.CarRaceModel;
+import com.programacion3.carrace.view.NeighborhoodScenery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -42,6 +43,7 @@ public class CarRaceController {
     @FXML
     public void initialize() {
         model = new CarRaceModel();
+        trackPane.getChildren().add(0, new NeighborhoodScenery());
     }
 
     /**
