@@ -38,11 +38,10 @@ public class CarRaceModel {
         finishOrder = new ArrayList<>();
         random = new Random();
 
-        cars.add(new Car("Sport", 7, "Red", "#E53935", START_X, laneY(0)));
-        cars.add(new Car("Muscle", 12, "Blue", "#1E88E5", START_X, laneY(1)));
-        cars.add(new Car("Rally", 23, "Green", "#43A047", START_X, laneY(2)));
-        cars.add(new Car("Coupe", 44, "Yellow", "#FDD835", START_X, laneY(3)));
-        cars.add(new Car("Formula", 88, "Purple", "#8E24AA", START_X, laneY(4)));
+        cars.add(new Car("Cheyenne", 12, "Blue", "#0000FF", START_X, laneY(0)));
+        cars.add(new Car("MiniBus", 69, "green", "#00FF00", START_X, laneY(1)));
+        cars.add(new Car("Tsuru", 88, "Red", "#FF0000", START_X, laneY(2)));
+        cars.add(new Car("Vocho", 44, "Yellow", "#FFFF00", START_X, laneY(3)));
         
         randomizeSpeeds();
     }
