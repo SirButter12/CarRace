@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 /**
  * Part of the View. Draws one car using only JavaFX shapes.
- * Each car type (Cheyenne, Tsuru, Ruta, Vocho, Humvee) has its own design.
+ * Each car type (patrol car, Tsuru, Ruta, Vocho, Humvee) has its own design.
  * All the shapes are inside one Group, so they move together.
  *
  * @author Ian
@@ -24,9 +24,11 @@ public class CarShape extends Group {
 
     /** Total length of every car, in pixels. */
     public static final double LENGTH = 110;
+    /** Y coordinate of the car number. */
     private static final double NUMBER_Y = 35;
-    
+    /** Radius of the wheels. */
     private static final double WHEEL_RADIUS = 9;
+    /** Y coordinate of the wheel centers. */
     private static final double WHEEL_Y = 42;
 
     /**
@@ -70,7 +72,8 @@ public class CarShape extends Group {
         roof.setStrokeWidth(1.5);
 
         getChildren().addAll(body, roof);
-        
+
+        // Windows (Rectangles)
         for (double[] w : design.windows()) {
             Rectangle window = new Rectangle(w[0], w[1], w[2], w[3]);
             window.setFill(Color.LIGHTSKYBLUE);
@@ -83,6 +86,11 @@ public class CarShape extends Group {
             addPoliceDetails();
         }
 
+        // Headlight
+        Rectangle headlight = new Rectangle(102, 26, 6, 5);
+        headlight.setFill(Color.LIGHTYELLOW);
+        getChildren().add(headlight);
+
         // Car number (Text)
         Text numberText = new Text(design.numberX(), NUMBER_Y, String.valueOf(car.getNumber()));
         numberText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
@@ -91,8 +99,19 @@ public class CarShape extends Group {
         numberText.setStrokeWidth(0.6);
 
         getChildren().add(numberText);
+
+        // Wheels (Circles with a spoke Line)
+        Group backWheel = createWheel(design.backWheelX());
+        Group frontWheel = createWheel(design.frontWheelX());
+        wheels.add(backWheel);
+        wheels.add(frontWheel);
+        getChildren().addAll(backWheel, frontWheel);
     }
-    
+
+    /**
+     * Adds a white stripe on the body and a red and blue light bar
+     * on the roof, so the patrol car looks like a police car.
+     */
     private void addPoliceDetails() {
         Rectangle stripe = new Rectangle(2, 28, 104, 5);
         stripe.setFill(Color.WHITE);
@@ -114,7 +133,7 @@ public class CarShape extends Group {
      */
     private static Design designFor(String type) {
         return switch (type) {
-            case "Vocho" -> new Design(
+            case "Vocho amarillo" -> new Design(
                     new double[]{0, 40, 1, 32, 6, 26, 18, 22, 92, 22, 104, 27, 109, 33, 110, 40},
                     new double[]{20, 22, 26, 14, 34, 7, 44, 3, 64, 3, 74, 7, 82, 14, 88, 22},
                     new double[][]{{36, 8, 16, 12}, {56, 8, 16, 12}},
@@ -149,12 +168,12 @@ public class CarShape extends Group {
     }
 
     /**
-    * Creates a wheel: a Circle, a small hub and a Line from the
-    * center to the edge, so the rotation is visible.
-    *
-    * @param centerX the x coordinate of the wheel center
-    * @return a Group that contains the wheel shapes
-    */
+     * Creates a wheel: a Circle, a small hub and a Line from the
+     * center to the edge, so the rotation is visible.
+     *
+     * @param centerX the x coordinate of the wheel center
+     * @return a Group that contains the wheel shapes
+     */
     private Group createWheel(double centerX) {
         Circle tire = new Circle(centerX, WHEEL_Y, WHEEL_RADIUS, Color.web("#212121"));
         tire.setStroke(Color.GRAY);
@@ -168,7 +187,7 @@ public class CarShape extends Group {
 
         return new Group(tire, spoke, hub);
     }
-    
+
     public Car getCar() {
         return car;
     }

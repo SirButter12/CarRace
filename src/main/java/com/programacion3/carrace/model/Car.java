@@ -1,10 +1,10 @@
 package com.programacion3.carrace.model;
 
 /**
-* Represents a single race car and stores its state.
-*
-* @author Ian
-*/
+ * Represents a single race car and stores its state.
+ *
+ * @author Ian
+ */
 public class Car {
 
     private final String type;
@@ -17,15 +17,15 @@ public class Car {
     private boolean finished;
 
     /**
-    * Creates a new car.
-    *
-    * @param type      the car type (e.g. "Sport", "Muscle")
-    * @param number    the car number painted on the body
-    * @param colorName the readable color name (e.g. "Red")
-    * @param colorHex  the color in hexadecimal format (e.g. "#E53935")
-    * @param x         the initial x coordinate
-    * @param y         the initial y coordinate
-    */
+     * Creates a new car.
+     *
+     * @param type      the car type (e.g. "Vocho amarillo", "Tsuru Tuneado")
+     * @param number    the car number painted on the body
+     * @param colorName the readable color name (e.g. "Yellow")
+     * @param colorHex  the color in hexadecimal format (e.g. "#FFFF00")
+     * @param x         the initial x coordinate
+     * @param y         the initial y coordinate
+     */
     public Car(String type, int number, String colorName, String colorHex, double x, double y) {
         this.type = type;
         this.number = number;
@@ -36,7 +36,7 @@ public class Car {
         this.speed = 0;
         this.finished = false;
     }
-       
+
     public String getType() { return type; }
     public int getNumber() { return number; }
     public String getColorName() { return colorName; }
@@ -51,10 +51,10 @@ public class Car {
     public void setFinished(boolean finished) { this.finished = finished; }
 
     /**
-    * Returns a short readable description of the car.
-    *
-    * @return the description, e.g. "Car #7 (Red Sport)"
-    */
+     * Returns a short readable description of the car.
+     *
+     * @return the description, e.g. "Car #23 (Yellow Vocho amarillo)"
+     */
     @Override
     public String toString() {
         return "Car #" + number + " (" + colorName + " " + type + ")";

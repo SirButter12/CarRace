@@ -5,12 +5,11 @@ import com.programacion3.carrace.model.Car;
 import com.programacion3.carrace.model.CarRaceModel;
 import java.io.IOException;
 import java.net.URL;
-import javafx.animation.KeyFrame; 
-import javafx.animation.Timeline; 
-import javafx.util.Duration;
 import java.util.List;
 import java.util.Random;
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 /**
  * Controller of the slideshow view. Shows one car image at a time,
@@ -37,14 +37,14 @@ public class SlideShowController {
     @FXML
     private ProgressBar slideProgress;
 
+    /** Time that each car stays on screen. */
+    private static final Duration SLIDE_DELAY = Duration.seconds(4.0);
+
     private List<Car> cars;
     private int currentSlide;
-    
-    private static final Duration SLIDE_DELAY = Duration.seconds(4.0);
-    
     private Timeline slideTimeline;
-    
     private MediaPlayer mediaPlayer;
+
     /**
      * Called automatically after the FXML is loaded.
      */
@@ -69,7 +69,7 @@ public class SlideShowController {
             carImageView.setImage(new Image(imageUrl.toExternalForm()));
         }
         captionLabel.setText(car + "  -  ready to race!");
-        
+
         slideProgress.setProgress((index + 1) / (double) cars.size());
 
         FadeTransition fade = new FadeTransition(Duration.millis(600), carImageView);
@@ -77,10 +77,10 @@ public class SlideShowController {
         fade.setToValue(1);
         fade.play();
     }
-    
+
     /**
-    * Creates a Timeline that shows the next car after each delay.
-    */
+     * Creates a Timeline that shows the next car after each delay.
+     */
     private void startSlideShow() {
         slideTimeline = new Timeline(new KeyFrame(SLIDE_DELAY, e -> nextSlide()));
         slideTimeline.setCycleCount(cars.size());
@@ -89,20 +89,22 @@ public class SlideShowController {
     }
 
     /**
-    * Moves to the next slide if there is one.
-    */
+     * Moves to the next slide if there is one.
+     */
     private void nextSlide() {
         currentSlide++;
         if (currentSlide < cars.size()) {
             showSlide(currentSlide);
         }
     }
-    
+
+    /**
+     * Plays one of the three intro songs, chosen at random.
+     */
     private void playMusic() {
         Random random = new Random();
-        
-        int i = random.nextInt(1, 4); 
-        
+        int i = random.nextInt(1, 4);
+
         URL soundUrl = App.class.getResource(String.format("sounds/intro%d.wav", i));
         if (soundUrl == null) {
             System.err.printf("Sound file not found: sounds/intro%d.wav\n", i);
@@ -113,22 +115,22 @@ public class SlideShowController {
         mediaPlayer.setVolume(0.6);
         mediaPlayer.play();
     }
-    
+
     /**
-    * Stops the slideshow and the music, then shows the race view.
-    */
-   private void goToRace() {
-       slideTimeline.stop();
-       if (mediaPlayer != null) {
-           mediaPlayer.stop();
-           mediaPlayer.dispose();
-       }
-       try {
-           App.setRoot("view/CarRace");
-       } catch (IOException ex) {
-           System.err.println("Could not load the race view: " + ex.getMessage());
-       }
-   }
+     * Stops the slideshow and the music, then shows the race view.
+     */
+    private void goToRace() {
+        slideTimeline.stop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+        }
+        try {
+            App.setRoot("view/CarRace");
+        } catch (IOException ex) {
+            System.err.println("Could not load the race view: " + ex.getMessage());
+        }
+    }
 
     /**
      * Skips the slideshow and opens the race right away.

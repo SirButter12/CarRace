@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
  * block houses with water tanks, power lines, a taco stand and a
  * Mexican flag in the background. Everything is drawn with JavaFX shapes.
  *
- * @author Tu Nombre
+ * @author Ian
  */
 public class NeighborhoodScenery extends Group {
 

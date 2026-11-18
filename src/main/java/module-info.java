@@ -9,4 +9,5 @@ module com.programacion3.carrace {
     exports com.programacion3.carrace;
     exports com.programacion3.carrace.model;
     exports com.programacion3.carrace.controller;
+    exports com.programacion3.carrace.view;
 }

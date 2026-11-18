@@ -8,11 +8,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
-* Entry point of the Car Race application. Shows the slideshow first,
-* then the race simulation.
-*
-* @author Ian
-*/
+ * Entry point of the Car Race application. Shows the slideshow first,
+ * then the race simulation.
+ *
+ * @author Ian
+ */
 public class App extends Application {
 
     /** Width of the window. */
@@ -22,6 +22,12 @@ public class App extends Application {
 
     private static Scene scene;
 
+    /**
+     * Opens the window and shows the slideshow.
+     *
+     * @param stage the main window
+     * @throws IOException if the slideshow view cannot be loaded
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("view/SlideShow"), WIDTH, HEIGHT);
@@ -32,27 +38,32 @@ public class App extends Application {
     }
 
     /**
-    * Replaces the current view with another FXML view.
-    *
-    * @param fxml the FXML path without extension (e.g. "view/CarRace")
-    * @throws IOException if the FXML file cannot be loaded
-    */
+     * Replaces the current view with another FXML view.
+     *
+     * @param fxml the FXML path without extension (e.g. "view/CarRace")
+     * @throws IOException if the FXML file cannot be loaded
+     */
     public static void setRoot(String fxml) throws IOException {
-       scene.setRoot(loadFXML(fxml));
+        scene.setRoot(loadFXML(fxml));
     }
-  
+
     /**
-    * Loads an FXML file located in the com/programacion3/carrace resources.
-    *
-    * @param fxml the FXML path without extension
-    * @return the root node of the loaded view
-    * @throws IOException if the FXML file cannot be loaded
-    */
+     * Loads an FXML file located in the com/programacion3/carrace resources.
+     *
+     * @param fxml the FXML path without extension
+     * @return the root node of the loaded view
+     * @throws IOException if the FXML file cannot be loaded
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    /**
+     * Starts the JavaFX application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch();
     }
